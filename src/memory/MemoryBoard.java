@@ -19,6 +19,17 @@ public class MemoryBoard {
 	 */
 	public MemoryBoard(int size, String backFileName, String[] frontFileNames) {
 		this.size = size;
+		this.backFileName = backFileName;
+		this.frontFileNames = frontFileNames;
+		createCards(backFileName, frontFileNames);
+
+	}
+
+	/*
+	 * Skapar size * size / 2 st memorykortbilder. Placerar ut varje kort på två
+	 * slumpmässiga ställen på spelplanen.
+	 */
+	private void createCards(String backFileName, String[] frontFileNames) {
 		int cards = 2 * size;
 		int totalCards = size * size; // storleken på spelbrädet
 		MemoryCardImage[][] board = new MemoryCardImage[size][size]; // "spelbrädet"
@@ -58,13 +69,7 @@ public class MemoryBoard {
 			this.turned = turned;
 		}
 
-	}
-
-	/*
-	 * Skapar size * size / 2 st memorykortbilder. Placerar ut varje kort på två
-	 * slumpmässiga ställen på spelplanen.
-	 */
-	private void createCards(String backFileName, String[] frontFileNames) {
+		
 
 	}
 
