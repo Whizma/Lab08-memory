@@ -7,18 +7,46 @@ public class MemoryGame {
 		String backFileName = "back.jpg";
 		MemoryBoard game = new MemoryBoard(4, backFileName, frontFileNames);
 		MemoryWindow window = new MemoryWindow(game);
+		int row;
+		int col;
+		int row2;
+		int col2;
+		int tries = 0;
 		window.drawBoard();
 		while (game.hasWon() == false) {
 			window.waitForMouseClick();
-			game.turnCard(window.getMouseRow(),window.getMouseCol());
-			window.drawCard(window.getMouseRow(),window.getMouseCol());
-			
-			
-			
-			window.delay(1000);
+			row = window.getMouseRow();
+			col = window.getMouseCol();
+			while (game.frontUp(row, col) == true) {
+				window.waitForMouseClick();
+				row = window.getMouseRow();
+				col = window.getMouseCol();
+			}
+			game.turnCard(row, col);
+			window.drawCard(row, col);
+		
+
+		window.waitForMouseClick();
+
+		row2 = window.getMouseRow();
+		col2 = window.getMouseCol();
+		while (game.frontUp(row2, col2) == true) {
+			window.waitForMouseClick();
+			row2 = window.getMouseRow();
+			col2 = window.getMouseCol();
 		}
+		game.turnCard(row2, col2);
+		window.drawCard(row2, col2);
 
-
-		// Fyll i egen kod här
+		if (game.same(row, col, row2, col2) == false) {
+			window.delay(1000);
+			game.turnCard(row, col);
+			window.drawCard(row, col);
+			game.turnCard(row2, col2);
+			window.drawCard(row2, col2);
+		}
+		tries++;
 	}
+		System.out.println("Det tog dig" + " " + tries + "försök för att vinna");
+}
 }
