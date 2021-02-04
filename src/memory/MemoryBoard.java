@@ -6,10 +6,9 @@ import java.util.Random;
 public class MemoryBoard {
 
 	private int size;
-	MemoryCardImage[][] board;
-	private String backFileName;
-	private String[] frontFileNames;
-	private int totalCards;
+	private MemoryCardImage[][] board;
+	private String backFileName; // dessa är väl visst used?
+	private String[] frontFileNames; //
 	boolean[][] turned;
 
 	/**
@@ -31,7 +30,6 @@ public class MemoryBoard {
 	 */
 	private void createCards(String backFileName, String[] frontFileNames) {
 		int cards = 2 * size;
-		int totalCards = size * size; // storleken på spelbrädet
 		MemoryCardImage[][] board = new MemoryCardImage[size][size]; // "spelbrädet"
 		this.board = board;
 		MemoryCardImage[] cardArray = new MemoryCardImage[cards]; // En array med cards-objekt
