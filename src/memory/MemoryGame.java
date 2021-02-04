@@ -47,6 +47,6 @@ public class MemoryGame {
 		}
 		tries++;
 	}
-		System.out.println("Det tog dig" + " " + tries + "försök för att vinna");
+		System.out.println("Det tog dig" + " " + tries + " " + "försök för att vinna");
 }
 }
